@@ -1,4 +1,5 @@
     人生苦短,我用GitHub Desktop,byebye!
+    详细:http://www.admin10000.com/document/5374.html
 ># 1.  操作
 >>## 1.1  创建版本库
 >>>### 1.1.1  通过命令行,转到目的文件夹.(使用pwd命令可查看当前目录)
