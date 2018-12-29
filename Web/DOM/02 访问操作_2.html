@@ -124,7 +124,9 @@
                 var raw = document.getElementById("row").value;
                 var cel = document.getElementById("cel").value;
                 var temp = document.getElementById("mytable");
-                temp.rows[raw-1].cells[cel-1].innerHTML = document.getElementById("course").value;
+                //temp.rows[raw-1].cells[cel-1].innerHTML = document.getElementById("course").value;
+                //也可以通过item方式访问
+                temp.rows.item(raw-1).cells.item(cel-1).innerHTML = document.getElementById("course").value;
             }
     </script>
 </html>
