@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script>
+            //HTML事件
+            /*
+                onload      页面完全加载后触发
+                onunload    页面完全卸载后触发
+                onselect    选择文本框内容后触发
+                onchange    文本框失去焦点,并且在他获得焦点后内容发生过改变时触发
+                onsubmit    单击"提交"按钮时在form上触发
+                onfocus     任何窗口或元素获得焦点时触发
+                onblur      任何窗口或元素失去焦点时触发
+            */
+        </script>
+    </head>
+    <body onload="alert('打开')" onunload="alert('关闭')">
+        <input type="text" onfocus="alert('获得焦点')" onblur="alert('失去焦点')" />
+        <input type="text" onchange="alert('改变')" />
+
+    </body>
+</html>
