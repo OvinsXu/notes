@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!--    结构元素
+    section:    定义文档中的节.                                            基本布局:
+    article:    代表独立的,完整的内容块.                                    <header>
+    nav:        表示页面中导航链接部分.                                      <nav>
+    slide:      用来装载非正文的部分.                                 <article>  <aside>
+    hgroup:     对标题元素(h1~h6)进行组合.                            <section>  [     ]
+    footer:     定义文档的页脚.                                             <footer>
+    header:     定义文档的页眉.
+    figure:     用于对元素进行组合.
+-->
+<!--------------------------------------------------------------------------------------------->
+<!--    语义元素
+    mark:       定义带有记号的文本.
+    progress:   任务进度.
+    time:       时间日期值.
+    details:    定义选项列表.
+    rudy:       定义rudy注释.
+    menu:       表示菜单列表.
+    command:    定义用户可能调用的mingling
+-->
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <header>
+        <div id="container">
+            <nav>
+                <ul>
+                    <li><a href="">Home</a></li>
+                    <li><a href="">About</a></li>
+                    <li><a href="">Articles</a></li>
+                    <li><a href="">Contacts</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+    <div id="content">
+        <aside>
+
+            <div class="inside">
+                <h2>Latest News</h2>
+                <ul>
+                    <li><a href="">2019.01.01</a></li>
+                    <li><a href="">2019.01.02</a></li>
+                    <li><a href="">2019.01.03</a></li>
+
+
+                </ul>
+            </div>
+        </aside>
+
+        <!--------------------------------------------------------------------------------------------->
+        <section id="mycount">
+            <h2>About your site</h2>
+            <p>one</p>
+            <p>two</p>
+            <h2>About your team</h2>
+            <ul>
+                <li><img src="">picture</li>
+                <li><img src="">picture</li>
+            </ul>
+        </section>
+        <details open="open">
+            <summary>index</summary>
+            <p>one</p>
+            <p>two</p>
+        </details>
+
+        <input list="list">
+        <datalist id="list">
+            <option value="haha"></option>
+            <option value="hehe"></option>
+        </datalist>
+        <!--------------------------------------------------------------------------------------------->
+    </div>
+
+
+    <footer id="root">
+
+    </footer>
+
+</body>
+
+</html>
