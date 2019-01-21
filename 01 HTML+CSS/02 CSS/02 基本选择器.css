@@ -1,55 +1,28 @@
-/*
-    颜色:(RGB模式)
-    R:红色      0-255
-    G:绿色      0-255
-    B:蓝色      0-255
-
-    1.  color:(10,20,30)
-    2.  color:(100%,20%,50%)
-    3.  color:blue
-    4.  color:#fff
-*/
-
-/*属性选择器
-
-1.有属性的S标签
-
-基本S[属性]{
-
+/*通配符*/
+*{
+    
+    background-color: aquamarine;
 }
-2.属性=值的标签
-[属性=值]
-
-3.属性包含值的标签
-[属性~=值]
-*/
-
+/*标签*/
 div{
-    width: 160px;
-    height:240px;
-    background-color:#369;
+    width: 240px;
+    height:320px;
+    background-color: blanchedalmond;
 }
-/*所有div都被选择*/
-
-
-div[id]{
-    width: 160px;
-    height:240px;
-    background-color:#666;
+/*ID选择器*/
+#haha{
+    width: 240px;
+    height:320px;
+    background-color: chartreuse;
 }
-/*有id属性的div被选择*/
-
-
-div[class = "33"]{
-    width: 160px;
-    height:240px;
-    background-color:#963;
+/*class选择器*/
+.hehe{
+    width: 240px;
+    height:320px;
+    background-color: darkred;
 }
-/*属性class="33"的被选择*/
 
-div[class~="44"]{
-    width: 160px;
-    height:240px;
-    background-color:red;
-}
-/*属性class包含"44"的被选择*/
+/*
+    p#p{}   选择p标签下id为p的元素
+    p.p{}   选择p标签下class为p的元素
+*/

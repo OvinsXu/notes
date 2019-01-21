@@ -3,3 +3,21 @@
     height: 40px;
     background-color: blue;
 }
+
+/*
+    颜色:(RGB模式)
+    R:红色      0-255
+    G:绿色      0-255
+    B:蓝色      0-255
+
+    1.  color:(10,20,30)
+    2.  color:(100%,20%,50%)
+    3.  color:blue
+    4.  color:#fff
+*/
+
+/*
+    原理:
+    优先原则:
+    继承原则
+*/
