@@ -1,0 +1,32 @@
+一.配置（json文件)
+    app.json
+        1.pages     页面
+        2.window    窗口
+        3.tabBar    底部选项卡
+二.结构（wxml文件）
+    布局
+        图片缩放:
+            mode='aspectFill'
+        
+
+    常用标签
+        1.<view>        类似<div>   
+        2.<text>        类似<font>  
+        3.<image>       类似<img>   
+
+        4.<navigator>   类似<a>     
+    组件
+        1.<swiper>  图片轮播
+
+三.样式(wxss文件)
+    竖直:
+        display:flex
+        flex-direction:column
+    边框:
+        border:1px solid #ddd   大小 样式 颜色
+        border-radius:20rpx     圆角
+    距离
+        外:margin:60rpx 20rpx      上下 左右
+        内:padding:20rpx 10rpx
+
+四.行为（js文件）
