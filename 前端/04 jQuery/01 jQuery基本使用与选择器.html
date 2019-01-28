@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./00 jQuery/jquery-3.3.1.js">
+        /*
+        1.引包
+
+        2.入口函数
+
+            方式一:
+            $(document).ready(function){
+
+            }
+
+            方式二:
+            $(function(){
+
+            })
+        
+        3.事件处理程序
+            1.事件源
+                JS      document.getElementById("id")
+                jQuery  $("#id")
+            2.事件
+                JS      document.getElementById("id").onclick
+                jQuery  $("#id").click
+            3.事件处理
+                JS      document.getElementById("id").onclick = function(){ 语句    }
+                jQuery  $("#id").click(function)(){ 语句    }
+
+
+
+
+        */
+    </script>
+    <script>
+        //CSS设置
+        $(document).ready(function(){
+            //单个样式
+           $("#id").css("color","red");
+           //多个样式
+           $(".class").css({
+               "width":"50px",
+               "height":"60px",
+               "background-color":"green"
+           })
+       })
+    </script>
+    <title></title>
+</head>
+<body>
+    <!--
+        选择器和CSS一样...
+    -->
+    <div id="id">hahaha</div>
+    <div class="class"></div>
+</body>
+</html>
