@@ -1,0 +1,28 @@
+/*通配符*/
+*{
+    
+    background-color: aquamarine;
+}
+/*标签*/
+div{
+    width: 240px;
+    height:320px;
+    background-color: blanchedalmond;
+}
+/*ID选择器*/
+#haha{
+    width: 240px;
+    height:320px;
+    background-color: chartreuse;
+}
+/*class选择器*/
+.hehe{
+    width: 240px;
+    height:320px;
+    background-color: darkred;
+}
+
+/*
+    p#p{}   选择p标签下id为p的元素
+    p.p{}   选择p标签下class为p的元素
+*/

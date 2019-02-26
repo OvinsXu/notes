@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../jQuery/00 jQuery/jquery-3.3.1.js"></script>
+    <title></title>
+    <script>
+        /*            
+        鼠标事件
+            click
+            dblclick
+            mouseenter
+            mouseleave
+        键盘事件
+            keypress
+            keydown
+            keyup
+        表单事件
+            submit
+            change
+            focus
+            blur
+        文档/窗口事件
+            load
+            unload
+            resize
+            scroll
+
+        1.绑定事件
+            bind 绑定两个事件
+                1.  $("#").bind("click mouseenter",function(){...})
+                2.  $("#").bind({
+                        "click" : function(){...},
+                        "mouseenter" : function(){...}
+                    })
+                3.  $("#").bind("click","数据(多个用json格式)",function(){
+
+                })
+
+            one 只触发一次
+                $("#").one("click",function(){...})
+
+            delegate 委托
+                $("父元素").delegate("子元素","click",function(){...})
+
+            on 强烈推荐
+                $("#").on("click","#",function(){...})
+
+        2.解绑事件
+            unbind
+                
+            undelegate
+
+            off
+                $("#").off(click);
+
+        3.触发事件
+            trigger
+            triggerHandel
+
+
+
+        事件对象(event是    function(event) )
+            event.data      传递时额外的数据
+            event.currentTarget     相当于this
+            event.target    事件触发源
+            event.pageX     鼠标横坐标
+            event.pageY     鼠标纵坐标
+            event.stopPropagation   阻止事件冒泡
+            event.preventDefault    阻止默认行为
+            event.type  事件类型
+            event.which 鼠标按键类型    左中右 1 2 3
+            event.keyCode   键盘按键类型
+        */
+       $(window).keydown(function(e){
+            window.alert(e.keyCode);
+       })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
