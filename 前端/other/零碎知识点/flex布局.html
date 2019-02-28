@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .father1{
+            display:flex;
+            
+        }
+        .father2{
+            width: 300px;
+            height: 300px;
+            border:1px aquamarine solid;
+            display: flex;
+
+            /* 方向:(默认水平)*/
+            flex-direction: column;     /*设置成垂直方向*/
+
+            /* 主轴对齐 */
+            justify-content: center;    /*设置垂直居中*/
+            /* justify-content: space-between;     设置两端对齐 */
+                /*
+                    flex-start      左对齐
+                    flex-end        右对齐
+                */
+
+            /* 竖轴对齐 */
+            align-items: center;        /* 设置水平居中 */
+
+            /* 换行 */
+            flex-wrap: wrap;
+
+            
+        }
+        .sun{
+            width:  60px;
+            height: 60px;
+            border: 1px aqua solid;
+            background-color:yellow;
+            
+        }
+    </style>
+</head>
+<body>
+    <div class="father1">
+        <div class="sun"></div>
+        <div class="sun"></div>
+        <div class="sun"></div>
+    </div>
+    <div class="father2">
+        <div class="sun"></div>
+        <div class="sun"></div>
+        <div class="sun"></div>
+    </div>
+</body>
+</html>

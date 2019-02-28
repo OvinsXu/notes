@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang = 'zh'>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href= ''>
+    
+    <title></title>
+    <!--        结局全局$符号冲突
+    <script>
+
+        
+        $ = {
+            show:function(){
+                //$符号已经被用了
+            }
+        }
+
+    </script>
+    <script src='../jQuery/00 jQuery/jquery-3.3.1.js'></script>
+    <script>
+        var myJQuery = $.noConflict();//$符号被释放,用myJQuery代替
+        
+
+        //      jQuery.data("属性",属性值);
+    </script>
+    -->
+
+    <script>
+        //扩展全局方法
+        $.log = function(){
+            window.alert("hahaha");
+        };
+        //$.fn  是jQuery的原型
+        //扩展对象
+        $.fn.log = function(){
+            
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang = 'zh'>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href= ''>
+    <script src='../../03 JavaScript/jQuery/00 jQuery/jquery-3.3.1.js'></script>
+    <script>
+        $(document).ready(function($){
+            var val_y = "★",val_n = "☆";
+            $(".ul").on("mouseenter","li",function(){
+                $(this).text(val_y)
+                       .prevAll()
+                       .text(val_y)
+                       .end()//回到最初
+                       .nextAll()
+                       .text(val_n)
+                       .on("click","li",function(){
+                           $(this).addClass("clicked").siblings().removeClass("clicked")
+                       })
+                       //...
+            })
+        })
+    </script>
+    <title></title>
+    <style>
+        .ul{
+            list-style: none;
+            display: flex;
+            
+        }
+    </style>
+</head>
+<body>
+    <ul class="ul">
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+        <li>☆</li>
+    </ul>
+</body>
+</html>
