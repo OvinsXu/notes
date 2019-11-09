@@ -526,8 +526,55 @@ c.eat();
 - 5.死锁
   - 两个进程相互都在等对方释放锁,就会发生死锁.
 
-### 
+### 线程通信
+ - 1.传统的线程通信
+   - wait() 让当前线程等待
+   - notify() 唤醒在当前同步监视器等待的单一线程,有多线程是随机选择一个
+   - notifyAll() 唤醒在当前同步监视器等待的所有线程.
+ - 2.用condition控制线程通信
+  - 如果使用Lock进行锁定,则无法使用上面的函数
+  - Condition将同步监视器方法分解成不同的对象.
+  - 分别对应的方法是  await();   signal();  signalAll();
+  ```
+    private final Lock lock = new ReentrantLock();
+    private final Condition cond = lock.newCondition();
 
+    //... 
 
+    lock.lock();
 
+    cond.await();
+
+    cond.signal();
+  ```
+ - 3.使用阻塞队列控制线程通信
+   - BlockingQueue接口提供了两个支持阻塞的方法
+     - put(E e);    将e元素放到队列中,如果元素已满,则阻塞
+     - take();      从队列头部取出元素,如果头部元素已经为空,则阻塞
+     - 所以通过定义一个容量为1的容器对象,两个线程分别调用容器对象的put();take();方法来控制自己阻塞,实现线程通信
+### 线程组和未处理的异常
+ - 线程组可以对组内线程进行统一管理,线程一旦加入某线程组,就不能改变所属线程组了,直到线程死亡为止.
+ - 1.为线程指定分组的构造器:
+   - Thread(ThreadGroup group,Runnable target);               以target的run方法为线程执行体
+   - Thread(ThreadGroup group,Runnable target,String name);
+   - Thread(ThreadGroup group,String name);                   以name为线程名
+ - 2.创建线程组
+   - ThreadGroup(String name);                                创建名为name的线程组
+   - ThreadGroup(ThreadGroup parent,String name)              创建parent线程组的子线程组name
+ - 3.ThreadGroup操控组内线程的方法
+   - int activeCount();                                       返回线程中中的活动线程数.
+   - interrupt();                                             中断线程组中所有线程
+   - isDaemon();                                              判断是否为后台线程组
+   - set'Daemon(boolean daemon)                               把该线程组设置成后台线程组
+   - setMaxPriority(int pri);                                 设置线程组的最高优先级
+ - 4.未处理的异常
+   - 线程组类中定义了一个uncaughtException(Thread t,Throwable e);方法,该方法可以处理线程组内所有线程所抛出的未处理的异常...
+### 线程组
+  - 因为系统启动一个线程的成本较高,所以线程池在系统启动时就先创建好多个空闲线程.
+  - ...
+### ForkJoinPool
+ - 为了充分利用多CPU,多核CPU,ForkJoinPool支持将一个任务拆分成多个小任务...
+### 线程相关类
+
+ - ...
 
