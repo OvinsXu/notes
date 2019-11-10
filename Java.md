@@ -221,7 +221,7 @@ c.eat();
     //懒汉式
     class 单例类名
     {
-              private static 单例类名 val；     		//val用来存放曾经创建的实例
+          private static 单例类名 val；     		//val用来存放曾经创建的实例
           private 单例类名(){};                  //将构造器隐藏
           public static 单例类名 func（）{		//定义类方法
               if(val == null)
@@ -577,4 +577,80 @@ c.eat();
 ### 线程相关类
 
  - ...
+---
 
+## 基础类库
+---
+
+### 创建String对象
+  ```
+  String s0 = "abc";                 //在字符串变量池中创建了"abc"变量,将地址赋给s0
+  String s1 = "abc";                 //将字符串变量池中"abc"变量的地址赋给s1
+  String s2 = new String("abc");     //在堆中创建空间保存"abc"变量,将地址付给s1
+  ```
+  特点:
+ - 其中s0会等于s1,都是相同对象的引用,而与s2不相等
+ - String类的构造方法...
+#### 常用方法
+  获取:
+ - 1.获取长度             int length();
+ - 2.获取字符             char charAt(int index)
+ - 3.获取位置
+   - int indexOf(char ch);
+   - int indexOf(char ch,int fromIndex);
+   - int indexOf(String str);
+   - int lastIndexOf(String str,int fromIndex);
+   - int lastIndexOf(char ch);
+   - int lastIndexOf(char ch,int fromIndex);
+   - int lastIndexOf(String str);
+   - int lastIndexOf(String str,int fromIndex);
+   - ...
+ - 4.获取子串
+   - String substring(int beginIndex,int endIndex);
+   - String substring(int beginIndex);
+  转换:
+ - 1.切割成 字符串/字符/字节 数组
+   - String[] split(String regex);
+   - char[] toCharArray();
+   - byte[] getBytes();
+ - 2.字母 大/小 写
+   - String toUpperCase();
+   - String toLowerCase();
+ - 3.替换
+   - String replace(char newCh,char oldCh);
+   - String replace(String newStr,String oldStr);
+ - 4.去除两边空格           String trim();
+ - 5.连接字符串             String contact(String Str);
+  判断:
+ - 1.内容是否相同       
+   - boolean equals(Object Obj);
+   - boolean equalsIgnoreCase(String Str);    //忽略字母大小写
+ - 2.是否包含
+   - boolean contains(String Str);
+ - 3.是否以指定字符串开头/结尾
+   - boolean startsWith(String Str);
+   - boolean endsWith(String Str);
+ - 4.比较字典顺序 abcd...   A>a
+   - int compareTo(String Str);
+  intern方法:对字符串池进行操作
+ - 字符串池里没有则创建,有则返回其引用
+### StringBuffer/StringBuilder
+   - 两个类功能相同
+   - 区别:StringBuffer线程同步,开销大,在单线程里优先使用StringBuilder
+  添加  append(data)
+  删除  
+   - delete(int start,int end);
+   - delete(int index);
+  插入  insert(int Index,data)
+  查找  和String相同
+  修改
+   - replace(int start,int end,String Str);  //把start~end之间内容,替换成Str
+   - setCharAt(int Index,char ch);
+
+
+---
+
+## 集合
+---
+
+有空再整理...
