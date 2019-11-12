@@ -772,14 +772,29 @@ c.eat();
 ### 对象序列化
 1.使用对象流实现序列化
  - 如果需要将一个对象保存到磁盘或通过网络传输,这个类应该实现Serializable接口或Externalizable接口,实现可序列化
- - 通过处理流ObjectOutputStream对象,调用writeObject(Cla)方法,把实现了序列化的对象Cla输出到二进制流中
+ - 通过处理流ObjectOutputStream对象,调用`writeObject(Cla)`方法,把实现了序列化的对象Cla输出到二进制流中
  - 如果需要从二进制流中取出对象,则需要反序列化
- - 通过处理ObjectInputStream对象,调用readObject()方法读取Object对象,如果知道对象类名,可以直接转化
+ - 通过处理ObjectInputStream对象,调用`readObject()`方法读取Object对象,如果知道对象类名,可以直接转化
 2.对象引用序列化
+ - 如果一个类持有另一个类的引用,那么持有的类必须是可序列化,此类才可以序列化.
+ - 如果两个类持有相同的类的引用,相同类仅序列化一次,每个序列化对象都有一个序列化编号
 3.自定义序列化
+ - 在不想被序列化的成员前使用`transient`关键字修饰
+ - 重写writeObject/readObject方法
+ - ANY-ACCESS-MODIFIER Object writeReplace() throws ObjectStreamException;    序列化是找其他对象替换不想被序列化的对象
+ - ANY-ACCESS-MODIFIER Object readResolve() throws ObjectStreamException;
 4.另一种序列化机制
+ - 实现Externallizable接口,自定义序列化
+   - void readExternal(Object in)
+   - void writeExternal(Object out)
 5.版本
-### NIO
+ - 为序列化类设置private static final类型的serialVersionUID;
+
+### NIO (New IO)
+
+
+---
+
 ## 八.网络编程
 ---
 
