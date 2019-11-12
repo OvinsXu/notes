@@ -1,4 +1,4 @@
-## 面向对象
+## 一.面向对象
 ---
 ### 1.类和对象
 
@@ -344,7 +344,7 @@ c.eat();
  - xfe 变成可执行的
 ---
 
-## 异常
+## 二.异常
 ---
 ### 1.简介
  - 定义：在运行时期发生的不正常情况。描述这种不正常情况的类，就叫做异常类。
@@ -406,7 +406,7 @@ c.eat();
 
 ---
 
-## 多线程
+## 三.多线程
 ---
 
 ### 简介
@@ -579,7 +579,7 @@ c.eat();
  - ...
 ---
 
-## 基础类库
+## 四.基础类库
 ---
 
 ### 创建String对象
@@ -650,7 +650,137 @@ c.eat();
 
 ---
 
-## 集合
+## 五.集合框架
 ---
 
 有空再整理...
+
+---
+
+## 六.泛型
+---
+
+---
+
+## 七.输入/输出
+---
+### Files类
+#### 访问文件和目录
+ - 1.访问 文件名 相关方法
+   - String getName();
+   - String getPath();
+   - File getAbsoluteFile();
+   - String getAbsolutePath();
+   - String getParent();
+   - boolean renameTo(File newName)
+ - 2.文件 检查 相关方法
+   - boolean exists();
+   - boolean canWrite();
+   - boolean canRead();
+   - boolean isFile();
+   - boolean isDirectory();
+   - boolean isAbsolute();
+ - 3.获取文件常规信息
+   - long lastModified();
+   - long length();
+ - 4.文件操作相关方法
+   - boolean createNewFile();
+   - boolean delete();              删除File对象所有
+   - static File createTempFile(String prefix,String suffix);   在临时文件夹中创建临时文件,给定前缀后缀
+   - static File createTempFile(String prefix,String suffix,File directory);   在指定文件夹中创建临时文件,给定前缀后缀
+   - void deleteOnExit();   注册一个删除钩子,当JVM退出时,删除文件
+ - 5.目录操作相关方法
+   - boolean mkdir();     试图创建File对象所对应的目录
+   - String[] list();     列出File对象所有的之文件名和路径名
+   - Files[] listFiles(); 列出File对象所有的之文件名和路径名,返回File数组
+   - static File[] listRoots();   列出系统所有的根目录
+#### 文件过滤器
+
+### 字节流/字符流
+#### InputStream和Reader
+ - InputStream
+   - int read();    从输入流中读取单个字节,返回字节数据(转化为int)
+   - int read(byte[] b)   从输入流中读取最多b.length个字节的数据,储存在b[]中,返回实际字节数 
+   - int read(byte[] b,int off,int len)     最多读len个字节,从b[]中off出开始储存,返回实际字节数
+ - Reader
+   - int read();    从输入流中读取单个字符,返回字符数据(转化为int)
+   - int read(char[] b)   从输入流中读取最多b.length个字符的数据,储存在b[]中,返回实际字符数 
+   - int read(char[] b,int off,int len)     最多读len个字符,从b[]中off处开始储存,返回实际字符数
+ - 移动记录指针
+   - void mark(int readAheadLimit)    在记录指针当前位置记录一个标记(mark)
+   - boolean markSupported()          判断此输入流是否支持mark()操作
+   - void reset()                     记录指针位置回到上次标记位
+   - long skip(long n)                记录指针向前移动n个字节/字符
+#### OutputStream和Write
+ - OutputStream和Write共有
+   - void write(int c);            将字节/字符输出到输出流中,c代表的可以是字节,也可以是字符
+   - void write(byte[]/char[] b)   将字节数组/字符数组输出到指定输出流中
+   - void write(byte[]/char[] b,int off,int len)     将字节数组/字符数组中off处开始长度为len的字节/字符输出到输出流中
+ - Write自有
+   - void write(String Str)
+   - void write(String Str,int off,int len);
+
+### 处理流
+  只要流的构造器参数不是物理节点即可,如
+  ```
+    FileOutputStream fos = new FileOutputStream("1.txt"); //物理节点
+    PrintStream ps = new Print Stream(fos); //处理流
+  ```
+### 转换流
+  用于将字节流转换成字符流,
+  InputStreamReader
+  OutputStreamWrite
+
+### 推回输入流
+  PushbackInputStream/PushbackReader
+
+  原始输入流 ---[调用unread()]---> 推回缓冲区 -----[调用read()]----->程序
+
+  只有 读完了缓冲区, read所需要的还没满,才会从原始输入流 读取
+
+  方法和InputStream/Reader相同.
+
+### 重定向标准输入/输出
+  Java的标准输入/输出(System.in/System.out)设备是键盘/鼠标,通过重定向可以自己指定
+  System类里提供了三个重定向标准输入/输出方法
+  static void setErr(PrintStream err)           重定向标准错误流
+  static void setIn(InputStream in)             重定向标准输入流
+  static void setOut(PrintStream out)           重定向标准输出流
+
+---
+### Java虚拟机读取其他进程的数据
+  InputStream getErrorStream()      获取子进程的错误流
+  InputStream getInputStream()      获取子进程的输入流
+  OutputStream getOutputStream()    获取子进程的输出流
+### RandomAccessFile类
+  特点:
+   - 允许只有定位文件记录指针
+   - 可以不从开始地方开始输入
+   - 可以向已存在的文件后追加内容
+   - 只能读写文件
+  操作记录指针:
+   - long getFilePointer()  返回当前文件的记录指针位置
+   - void seek(long pos)    将指针定位到pos处
+  创建
+   - 有两个构造器,(String FileName/File F,String mode),在于指定文件的不同(String/File)
+   - mode有四种模式
+     - "r"      只读,文件不在,报错
+     - "rw"     读写,文件不在,创建
+     - "rwd"    "rw"+文件内容的更新同步写入底层存储设备
+     - "rws"    "rwd"+文件元数据的更新同写入底层存储设备
+
+### 对象序列化
+1.使用对象流实现序列化
+ - 如果需要将一个对象保存到磁盘或通过网络传输,这个类应该实现Serializable接口或Externalizable接口,实现可序列化
+ - 通过处理流ObjectOutputStream对象,调用writeObject(Cla)方法,把实现了序列化的对象Cla输出到二进制流中
+ - 如果需要从二进制流中取出对象,则需要反序列化
+ - 通过处理ObjectInputStream对象,调用readObject()方法读取Object对象,如果知道对象类名,可以直接转化
+2.对象引用序列化
+3.自定义序列化
+4.另一种序列化机制
+5.版本
+### NIO
+## 八.网络编程
+---
+
+
