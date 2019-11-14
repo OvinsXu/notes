@@ -791,11 +791,123 @@ c.eat();
  - 为序列化类设置private static final类型的serialVersionUID;
 
 ### NIO (New IO)
+#### Buffer
+ - Buffer是一个抽象类,可以保存多个类型相同的数据,基本类型除了boolean外,都有相应的Buffer子类:ByteBuffer,CharBuffer...
+ - static XxxBuffer allocate(int capacity)    创建一个容量为capacity的XxxBuffer对象.(普通Buffer)
+ - static XxxBuffer allocateDirect(int capacity)    (直接Buffer):创建成本高,读取效率高
+  `CharBuffer CB = CharBuffer.allocate(8);`
+ - 0 <= mark <= position <= limit <= capacity
+   - mark是指针位置标记 
+   - position是可读写区的开始位置
+   - limit是可读写区的末位置
+   - capacity是缓冲区容量
+ - 两个重要方法:开始时Buffer的position为0,limit为capacity,程序可以通过put()向Buffer放入数据,position向后移动,取出数据用get();
+   - flip()     limit = position; position = 0;      为输出数据做准备
+   - clear()    position = 0;  limit = capacity;     为输入数据做准备
+ - 其他常用方法:
+   - int capacity();            返回buffer的capacity大小
+   - boolean hasRemaining();    判断position和limit之间是否还有元素可提供处理
+   - int limit();               返回limit的位置
+   - Buffer limit(int newLt);   设置新的limit位置
+   - buffer mark();             设置mark位置
+   - int position();            返回Buffer的position位置
+   - Buffer position(int newPs);设置新的position位置
+   - int remaining();           返回position和limit之间的元素个数
+   - Buffer reset();            position = mark
+   - Buffer rewind();           position = 0; mark = NULL
+#### Channel接口
+ - Channel可以将指定文件部分或全部映射成Buffer,程序不能直接与Channel进行交互,而要通过Buffer.
+ - Channel要通过传统的节点InputStream,OutputStream的getChannel()来返回对应的Channel,FileInputStream返回的是Channel,PipedInputStream和PipedOutputStream()返回的是Pipe.SinkChannel和Pipe.SourceChannel.
+...
+
 
 
 ---
 
 ## 八.网络编程
 ---
+### Java的基本网络支持
+#### InetAddress类(子类:Inet4Address,Inet6Address)
+ - getByName(String host)     根据主机(域名)获取对象
+ - getByAddress(byte[] addr)  根据地址(IP)获取对象
+ - String getCanonicalHostAddress();    获取此IP的全限定域名
+ - String getHostAddress();             返回实例的IP地址
+ - String getHostName();                获取提供此IP的主机名
+
+ - getLocalHost()   获取本机IP地址对应的InetAddress对象
+ - isReachable()    测试是否可以到达该地址
+
+#### URLDecoder和URLEncoder
+```
+  String Word = URLDecoder.decode("%E7%96%AF","utf-8");
+  String Str = URLEncoder.encode("呵呵","GBK");
+```
+#### URL,URLConnection和URLPermission
+ - URL类
+   - String getFile();  获取该URL的资源名
+   - String getHost();  获取该URL的主机名
+   - String getPath();  获取该URL的路径部分
+   - int getPort();     获取该URL的端口号
+   - String getProtocol();  获取该URL的协议名
+   - String getQuery();     获取该URL的查询字符串部分
+   - URLConnection openConnection();    返回一个URLConnection对象,该对象代表了与URL所引用的远程对象的连接
+   - InputStream openStream();          打开与此URL的连接,并返回一个用于读取该URL资源的InputStream.
+ - URLPermission工具类:客户端:请求头<----->响应头:服务器端
+   - 用于管理HttpURLConnection的权限问题
+   - setAllowUserInteraction();         设置该URLConnection对象的allowUserInteraction请求头字段的值
+   - setDoInput();                      设置该URLConnection对象的doInput请求头字段的值
+   - setDoOutput();                     设置该URLConnection对象的doOutput请求头字段的值
+   - setIfModifiedSince();              设置该URLConnection对象的ifModifiedSince请求头字段的值
+   - setUseCaches();                    设置该URLConnection对象的useCaches请求头字段的值
+   - setRequestProperty(String key,String values);              设置该URLConnection对象的key请求头字段的值为values
+   - addRequestProperty(String key,String values);              增加该URLConnection对象的key请求头字段的值为values
+
+   - Object getContent();                 获取该URLConnection的内容
+   - String getHeaderField(String name);  获取指定响应头字段的值
+     - getContentEncoding();
+     - getContentLength();
+     - getContentType();
+     - getDate();
+     - getExpiration();
+     - getLastModified();
+   - getInputStream();                    返回该URLConnection对应的输入流,用于获取URLConnection响应的内容
+   - getOutputStream();                   返回该URLConnection对应的输出流,用于向URLConnection发送请求的参数
+
+### 基于TCP协议的网络编程
+#### 服务器端
+ - Socket accept();         接收客户端Socket连接请求,返回对应的Socket
+ - ServerSocket(int port,)                                    指定端口创建ServerSocket,0~65535
+ - ServerSocket(int port,int backlog)                         改变连接队列长度的参数backlog
+ - ServerSocket(int port,int backlog,InetAddress localAddr);  指定绑定的IP地址
+ - close();       关闭ServerSocket
+#### 客户端
+ - Socket(InetAddr/String remoteAddress,int port)             创建连接到指定远程主机的端口号;
+ - Socket(InetAddr/String remoteAddress,int port,InetAddress localAddr,int localPort);        指定本地主机的IP端口
+ - InputStream getInputStream();        返回Socket对象的输入流,程序通过该输入流从Socket中取出数据
+ - OutputStream getOutputStream();      返回Socket对象的输出流,程序通过该输入流从Socket中输出数据
+#### 加入多线程
+#### 记录客户端用户信息
+#### 半关闭的Socket
+ - shutdownInput();     关闭该Socket的输入流
+ - shutdownOutput();    关闭该Socket的输出流
+
+#### 使用NIO实现非阻塞
+ - Selector:是SelectableChannel对象的多路复用器,通过此类的静态open()创建Selector实例.
+ - 一个Selector实例有三个SelectionKey集合:所有/被选择/被取消的Channel,前两者可以通过keys()/selectedKey()方法返回该集合
+
+ - int select()               监控所有注册的Channel,当Channel中有需要处理的IO操作时,该方法将其加入被选择的SelectionKey集合
+ - int select(long timeout)   设置超过时长的select操作
+ - int selectNow()            执行一个立即返回的select()操作
+ - Selector wakeup()          使一个未返回的select()方法立即返回
 
 
+ - SelectableChannel:代表了可以支持非阻塞IO操作的Channel对象,它可被注册到Selector上
+ - SelectableChannel configureBlocking(boolean block);      设置是否采用阻塞模式
+ - boolean isBlocking();        返回是否是阻塞模式;
+ - int vaildOps();              返回一个整数值,代表这个Channel所支持的所有操作.读1写4连接8接收16,多个权限则按位或,(相加,如5是读写)
+ - boolean isRegistered();      返回是否已经注册
+ - SelectionKey keyFor(Selector sel);     返回与sel的注册关系
+
+
+ - SelectionKey:该对象代表了SelectableChannel与Selector之间的关系
+ - ServerSocketChannel:支持非阻塞操作...你妹的,这么多内容!
