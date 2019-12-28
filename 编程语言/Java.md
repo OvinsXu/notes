@@ -884,7 +884,7 @@ c.eat();
  - Socket(InetAddr/String remoteAddress,int port)             创建连接到指定远程主机的端口号;
  - Socket(InetAddr/String remoteAddress,int port,InetAddress localAddr,int localPort);        指定本地主机的IP端口
  - InputStream getInputStream();        返回Socket对象的输入流,程序通过该输入流从Socket中取出数据
- - OutputStream getOutputStream();      返回Socket对象的输出流,程序通过该输入流从Socket中输出数据
+ - OutputStream getOutputStream();      返回Socket对象的输出流,程序通过该输入流向Socket中输出数据
 #### 加入多线程
 #### 记录客户端用户信息
 #### 半关闭的Socket
