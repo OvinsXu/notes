@@ -17,7 +17,7 @@
   - 定义语法：
 
         类名 对象名 = new 类名(参数);
- 
+
 
 ### 2.方法详解
 
@@ -68,6 +68,7 @@
 ### 6.继承
 
  - 特点
+
      - 子类无法获取父类的构造器。
  - 语法
 
@@ -77,9 +78,11 @@
         }
 
  - 重写
+
      - 子类含有与父类同名的方法时，子类定义的方法会覆盖父类的方法，称之为方法重写。
 
  - super限定
+
      - 当子类发生了方法重写后，可以通过super来访问父类中被重写的方法。
  - 调用父类构造器
      - 在子类中，通过`super(形参)`；的形式调用父类构造器
@@ -253,7 +256,7 @@ c.eat();
         //code...
         //定义而不实现.
     }
-``` 
+```
  - 接口支持多继承
  - 使用接口
 ```
@@ -261,9 +264,9 @@ c.eat();
     {
        //code...
     }
-```        
+```
 
- 
+
  - 面向接口编程
      -  简单工厂模式
           1. ​    Computer类 -> Printer方法    如果Printer改变，则需在Computer类中改
@@ -522,7 +525,7 @@ c.eat();
             l.unlock();
         }
         
-  ``` 
+  ```
 - 5.死锁
   - 两个进程相互都在等对方释放锁,就会发生死锁.
 
@@ -608,7 +611,7 @@ c.eat();
  - 4.获取子串
    - String substring(int beginIndex,int endIndex);
    - String substring(int beginIndex);
-  转换:
+    转换:
  - 1.切割成 字符串/字符/字节 数组
    - String[] split(String regex);
    - char[] toCharArray();
@@ -621,7 +624,7 @@ c.eat();
    - String replace(String newStr,String oldStr);
  - 4.去除两边空格           String trim();
  - 5.连接字符串             String contact(String Str);
-  判断:
+    判断:
  - 1.内容是否相同       
    - boolean equals(Object Obj);
    - boolean equalsIgnoreCase(String Str);    //忽略字母大小写
@@ -632,34 +635,98 @@ c.eat();
    - boolean endsWith(String Str);
  - 4.比较字典顺序 abcd...   A>a
    - int compareTo(String Str);
-  intern方法:对字符串池进行操作
+    intern方法:对字符串池进行操作
  - 字符串池里没有则创建,有则返回其引用
 ### StringBuffer/StringBuilder
    - 两个类功能相同
    - 区别:StringBuffer线程同步,开销大,在单线程里优先使用StringBuilder
-  添加  append(data)
-  删除  
+    添加  append(data)
+    删除  
    - delete(int start,int end);
    - delete(int index);
-  插入  insert(int Index,data)
-  查找  和String相同
-  修改
+    插入  insert(int Index,data)
+    查找  和String相同
+    修改
    - replace(int start,int end,String Str);  //把start~end之间内容,替换成Str
    - setCharAt(int Index,char ch);
-
 
 ---
 
 ## 五.集合框架
 ---
+> 特点:
+> 1.用于存储对象的容器
+> 2.长度可变
+> 3.不可以存储基本类型值
 
-有空再整理...
+### Collection和Iterator(内部类)接口
+添加:
+  - boolean add(Object o);
+  - boolean addAll(Collection c);
+删除:
+  - boolean remove(Object o);
+  - boolean removeAll(Collection c);
+  - boolean retainAll(Collection c);    //删除c里不包含的元素
+  - void clear();
+判断:
+  - boolean contains(Object o);
+  - boolean containsAll(Collection c);
+  - boolean isEmpty();
+获取:
+  - int size();
+  - Object[] toArray();
+  - Iterator iterator();  
+### List 元素有序,可重复
+> 特性:
+> Iterator it = list.Iterator();  //唯一可在迭代中进行增删操作
+> 包含:
+> Vector        内部数据结构是数组,同步的,查询慢
+> ArrayList     内部数据结构是数组,不同步的,查询较快
+> LinkedList    内部数据结构是链表,不同步的,增删快
+- 添加  void add(index,element/Collection)
+- 删除  Object remove(index)
+- 修改  Object set(index,element)
+- 获取
+  - Object get(index)
+  - int indexOf(Object)
+  - int lastIndexOf(Object)
+  - List subList(from,to)
+  
+- LinkedList特性:addFrist();addEnd();
+### Set 元素无顺序,不可以重复
+- HashSet
+  - LinkedHashSet `唯一且有序`
+- TreeSet:可以对Set中元素指定排序,按自然顺序
+  - 方式一:实现Comparable接口的compareTo方法,指定按照对象的某一元素进行排序;compare中进行判断大小,返回正负数
+  - 方式二:定义类实现Comparable接口的compare方法,将该类对象传给TreeSet的构造器
 
----
+### Map<K,V>一次添加一对
+- keySet()    获取Map中所有key的Set集合,可以进行迭代
+- entrySet()  Map.Entry   是他们键值对的映射关系类型,getKey/getValue 获取 键/值
+- 子类:
+  - Hashtable 同步,不允许null作键
+    - Properties:用来存储键值对型的配置文件的信息
+  - HashMap   不同步,允许null作键
+  - TreeMap   不同步
 
-## 六.泛型
----
+### 泛型
 
+- <>中必须是应用类型
+- 是一种安全机制,对集合中对象类型的限定,在编译时检测,编译后会擦除
+- 在类中操作的引用类型不确定时,可以用泛型
+- 限定迭代器  Collection<? extends Person>上限  ? super Person下限
+
+集合选择技巧:
+需要唯一吗?
+- 需要:Set
+  - 需要定制顺序吗?
+    - 需要:TreeSet
+    - 不需要:HashSet
+    - 需要和存储相同顺序:LinkedHashSet
+- 不需要:List
+  - 需要频繁增删吗?
+  - 需要:LinkedList
+  - 不需要:ArrayList
 ---
 
 ## 七.输入/输出
@@ -697,6 +764,61 @@ c.eat();
 #### 文件过滤器
 
 ### 字节流/字符流
+> 使用技巧
+> 1，明确源和目的(汇)
+> 	源：InputStream  Reader
+> 	目的：OutputStream  Writer
+> 
+> 2，明确数据是否是纯文本数据。
+> 	源：是纯文本：Reader
+> 		否：InputStream
+> 	目的：是纯文本 Writer
+> 		否：OutputStream
+> 	
+> 	到这里，就可以明确需求中具体要使用哪个体系。
+> 	
+> 3，明确具体的设备。
+> 	源设备：
+> 		硬盘：File
+> 		键盘：System.in
+> 		内存：数组
+> 		网络：Socket流
+> 		
+> 	目的设备：
+> 		硬盘：File
+> 		控制台：System.out
+> 		内存：数组
+> 		网络：Socket流
+> 
+> 4，是否需要其他额外功能。
+> 	1，是否需要高效(缓冲区);
+> 		是，就加上buffer.
+> 	2，转换。
+> 	
+> 
+> 
+> 需求1：复制一个文本文件。
+> 	1,明确源和目的。
+> 		源：InputStream Reader
+> 		目的：OutputStream  Writer
+> 	2,是否是纯文本？
+> 		是！
+> 		源：Reader
+> 		目的：Writer
+> 		
+> 	3,明确具体设备。
+> 		源：
+> 			硬盘：File
+> 		目的：
+> 			硬盘：File
+> 	
+> 		FileReader fr = new FileReader("a.txt");
+> 		FileWriter fw = new FileWriter("b.txt");
+> 		
+> 	4,需要额外功能吗？
+> 		需要，需要高效。
+> 		BufferedReader bufr = new BufferedReader(new FileReader("a.txt"));
+> 		BufferedWriter bufw = new BufferedWriter(new FileWriter("b.txt"));
 #### InputStream和Reader
  - InputStream
    - int read();    从输入流中读取单个字节,返回字节数据(转化为int)
@@ -752,16 +874,17 @@ c.eat();
   InputStream getErrorStream()      获取子进程的错误流
   InputStream getInputStream()      获取子进程的输入流
   OutputStream getOutputStream()    获取子进程的输出流
+
 ### RandomAccessFile类
   特点:
    - 允许只有定位文件记录指针
    - 可以不从开始地方开始输入
    - 可以向已存在的文件后追加内容
    - 只能读写文件
-  操作记录指针:
+    操作记录指针:
    - long getFilePointer()  返回当前文件的记录指针位置
    - void seek(long pos)    将指针定位到pos处
-  创建
+    创建
    - 有两个构造器,(String FileName/File F,String mode),在于指定文件的不同(String/File)
    - mode有四种模式
      - "r"      只读,文件不在,报错
@@ -795,7 +918,7 @@ c.eat();
  - Buffer是一个抽象类,可以保存多个类型相同的数据,基本类型除了boolean外,都有相应的Buffer子类:ByteBuffer,CharBuffer...
  - static XxxBuffer allocate(int capacity)    创建一个容量为capacity的XxxBuffer对象.(普通Buffer)
  - static XxxBuffer allocateDirect(int capacity)    (直接Buffer):创建成本高,读取效率高
-  `CharBuffer CB = CharBuffer.allocate(8);`
+    `CharBuffer CB = CharBuffer.allocate(8);`
  - 0 <= mark <= position <= limit <= capacity
    - mark是指针位置标记 
    - position是可读写区的开始位置
@@ -875,39 +998,86 @@ c.eat();
 
 ### 基于TCP协议的网络编程
 #### 服务器端
- - Socket accept();         接收客户端Socket连接请求,返回对应的Socket
- - ServerSocket(int port,)                                    指定端口创建ServerSocket,0~65535
- - ServerSocket(int port,int backlog)                         改变连接队列长度的参数backlog
- - ServerSocket(int port,int backlog,InetAddress localAddr);  指定绑定的IP地址
- - close();       关闭ServerSocket
+- Socket accept();         接收客户端Socket连接请求,返回对应的Socket
+- ServerSocket(int port,)                                    指定端口创建ServerSocket,0~65535
+- ServerSocket(int port,int backlog)                         改变连接队列长度的参数backlog
+- ServerSocket(int port,int backlog,InetAddress localAddr);  指定绑定的IP地址
+- close();       关闭ServerSocket
 #### 客户端
- - Socket(InetAddr/String remoteAddress,int port)             创建连接到指定远程主机的端口号;
- - Socket(InetAddr/String remoteAddress,int port,InetAddress localAddr,int localPort);        指定本地主机的IP端口
- - InputStream getInputStream();        返回Socket对象的输入流,程序通过该输入流从Socket中取出数据
- - OutputStream getOutputStream();      返回Socket对象的输出流,程序通过该输入流向Socket中输出数据
+- Socket(InetAddr/String remoteAddress,int port)             创建连接到指定远程主机的端口号;
+- Socket(InetAddr/String remoteAddress,int port,InetAddress localAddr,int localPort);        指定本地主机的IP端口
+- InputStream getInputStream();        返回Socket对象的输入流,程序通过该输入流从Socket中取出数据
+- OutputStream getOutputStream();      返回Socket对象的输出流,程序通过该输入流向Socket中输出数据
 #### 加入多线程
 #### 记录客户端用户信息
 #### 半关闭的Socket
- - shutdownInput();     关闭该Socket的输入流
- - shutdownOutput();    关闭该Socket的输出流
+- shutdownInput();     关闭该Socket的输入流
+- shutdownOutput();    关闭该Socket的输出流
 
 #### 使用NIO实现非阻塞
- - Selector:是SelectableChannel对象的多路复用器,通过此类的静态open()创建Selector实例.
- - 一个Selector实例有三个SelectionKey集合:所有/被选择/被取消的Channel,前两者可以通过keys()/selectedKey()方法返回该集合
+- Selector:是SelectableChannel对象的多路复用器,通过此类的静态open()创建Selector实例.
+- 一个Selector实例有三个SelectionKey集合:所有/被选择/被取消的Channel,前两者可以通过keys()/selectedKey()方法返回该集合
 
- - int select()               监控所有注册的Channel,当Channel中有需要处理的IO操作时,该方法将其加入被选择的SelectionKey集合
- - int select(long timeout)   设置超过时长的select操作
- - int selectNow()            执行一个立即返回的select()操作
- - Selector wakeup()          使一个未返回的select()方法立即返回
-
-
- - SelectableChannel:代表了可以支持非阻塞IO操作的Channel对象,它可被注册到Selector上
- - SelectableChannel configureBlocking(boolean block);      设置是否采用阻塞模式
- - boolean isBlocking();        返回是否是阻塞模式;
- - int vaildOps();              返回一个整数值,代表这个Channel所支持的所有操作.读1写4连接8接收16,多个权限则按位或,(相加,如5是读写)
- - boolean isRegistered();      返回是否已经注册
- - SelectionKey keyFor(Selector sel);     返回与sel的注册关系
+- int select()               监控所有注册的Channel,当Channel中有需要处理的IO操作时,该方法将其加入被选择的SelectionKey集合
+- int select(long timeout)   设置超过时长的select操作
+- int selectNow()            执行一个立即返回的select()操作
+- Selector wakeup()          使一个未返回的select()方法立即返回
 
 
- - SelectionKey:该对象代表了SelectableChannel与Selector之间的关系
- - ServerSocketChannel:支持非阻塞操作...你妹的,这么多内容!
+- SelectableChannel:代表了可以支持非阻塞IO操作的Channel对象,它可被注册到Selector上
+- SelectableChannel configureBlocking(boolean block);      设置是否采用阻塞模式
+- boolean isBlocking();        返回是否是阻塞模式;
+- int vaildOps();              返回一个整数值,代表这个Channel所支持的所有操作.读1写4连接8接收16,多个权限则按位或,(相加,如5是读写)
+- boolean isRegistered();      返回是否已经注册
+- SelectionKey keyFor(Selector sel);     返回与sel的注册关系
+
+
+- SelectionKey:该对象代表了SelectableChannel与Selector之间的关系
+- ServerSocketChannel:支持非阻塞操作...你妹的,这么多内容!
+
+### UDP
+- Datagram
+
+
+## 反射机制
+> 用于动态获取类中信息,用Class类实现.
+> 一个应用例子:软件读取配置信息,根据信息,通过反射机制获取对应类的信息,放到软件中从处理.这个时候我们写一个类,并将信息写到配置文件中,软件就会执行加载我们写的类去处理了,不需要我们去软件源代码中操作
+### 获取字节码对象的方法
+- 用getClass()方法
+- 用.class属性
+- 用Class.forName(class)方法
+
+```
+  String name = "cn.xu.pack";
+  Class clazz = Class.forName(name);
+
+  //构造函数
+  Object o = clazz.newInstance();   //1.无参
+
+  Constructor constructor = clazz.getContructor(int.class,double.class);  //2.有参
+  Object O = constructor.newInstance(10,11.3);
+
+  //字段
+  
+  Field field = clazz.getField(n);           //获取类中的n变量(public),如果无参数,则获取所有变量,返回数组
+  Field[] field = clazz.getDeclaredField();   //私有变量的也可以获取
+
+  //方法
+  Method method = clazz.getMethod("fun",null); //获取空参数函数fun,有参数则把null替换掉
+  
+  method.invoke(o,null);    //有参数则把null替换掉
+```
+
+## 正则表达式
+> 用于操作字符串数据
+```
+String str = "helloworld";
+boolean b = str.matchs(regux)
+```
+> 范围用[]  如[13],[a-z],[a-[d-g]]
+> 数量用{}  
+> 组用()
+- 匹配
+- 切割
+- 替换
+- 获取
