@@ -1,17 +1,13 @@
-## 一，开发环境配置
+# 一，开发环境配置
+
+安装环境：`npm install -g react-native-cli`  
+升级环境：`npm update -g react-native-cli`  
+创建项目：`react-native init 项目名称`  
+编译运行：`react-native run-android`  
+
+# 二，布局
 
 
-
-```js
-安装环境：npm install -g react-native-cli
-升级环境：npm update -g react-native-cli
-创建项目：react-native init 项目名称
-编译运行：react-native run-android
-```
-
-## 二，布局
-
-```
 一，flex布局
 	1.flexDirction	设置主轴方向	
 		row(->)/column（默认）
