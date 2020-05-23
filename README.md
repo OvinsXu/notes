@@ -19,7 +19,7 @@
 
 ---
 
-//整理笔记真累,有一些写在有道云还没整理的笔记,有空再整理
+//整理笔记真累,有一些写在有道云还没整理的笔记,有空再整理  
 [STM32](http://note.youdao.com/noteshare?id=69de206c8815a254adb6fc96f6af5a05)  
 [嵌入式Linux](http://note.youdao.com/noteshare?id=1dcfd8bdbeae24cbb7d88bb9b335376b)  
 [Android开发](http://note.youdao.com/noteshare?id=8cdf68587718a2d2ca1c6362c546d85b)  
