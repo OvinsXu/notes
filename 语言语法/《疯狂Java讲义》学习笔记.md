@@ -1,6 +1,9 @@
-# Java
+# 《疯狂Java讲义》学习笔记
 
-## 一.面向对象
+> java全部内容很多，这里主要记的是《疯狂Java讲义》的读书笔记，从面向对象开始记。  
+> 写的不是很全面和仔细，仅当学习记录。
+
+## 1.面向对象
 
 ### 1.类和对象
 
@@ -19,7 +22,7 @@
 
 可以包括成员变量，方法，构造器，初始化块，内部类
 
-#### 对象：该类事物的实例，在Java中通过new来创建。
+#### 对象：该类事物的实例，在Java中通过new来创建
 
 - 定义语法：
 
@@ -372,14 +375,14 @@ c.eat();
 ### 21.使用jar文件
 
 - jar cf 包名 路径
-- cvf 显示过程 
+- cvf 显示过程  
 - cvfM 不生成清单文件
 - jar xf 包名 （解压）
 - xfe 变成可执行的
 
 ---
 
-## 二.异常
+## 2.异常
 
 ---
 
@@ -450,7 +453,7 @@ c.eat();
 
 ---
 
-## 三.多线程
+## 3.多线程
 
 ---
 
@@ -507,7 +510,7 @@ c.eat();
 - 4.调用FutureTask对象的get()方法来获得子线程执行结束后的返回值
   
 ```java
-    //等学完泛型...
+    //还有一些，等待整理...
 ```
 
 ### 线程的生命周期
@@ -577,7 +580,7 @@ c.eat();
         try{
             //....
         }finally{
-            //解锁,为了防止忘记解锁,放在finally块里 
+            //解锁,为了防止忘记解锁,放在finally块里
             l.unlock();
         }
 
@@ -601,7 +604,7 @@ c.eat();
     private final Lock lock = new ReentrantLock();
     private final Condition cond = lock.newCondition();
 
-    //... 
+    //...
 
     lock.lock();
 
@@ -650,7 +653,7 @@ c.eat();
 
 ---
 
-## 四.基础类库
+## 4.基础类库
 
 ---
 
@@ -729,12 +732,12 @@ c.eat();
 
 ---
 
-## 五.集合框架
+## 5.集合框架
 
 ---
-> 特点:
-> 1.用于存储对象的容器
-> 2.长度可变
+> 特点:  
+> 1.用于存储对象的容器  
+> 2.长度可变  
 > 3.不可以存储基本类型值
 
 ### Collection和Iterator(内部类)接口
@@ -802,22 +805,22 @@ c.eat();
 - 在类中操作的引用类型不确定时,可以用泛型
 - 限定迭代器  Collection<? extends Person>上限  ? super Person下限
 
-集合选择技巧:
+集合选择技巧:  
 需要唯一吗?
 
 - 需要:Set
-- 需要定制顺序吗?
-- 需要:TreeSet
-- 不需要:HashSet
-- 需要和存储相同顺序:LinkedHashSet
+  - 需要定制顺序吗?
+    - 需要:TreeSet
+    - 不需要:HashSet
+  - 需要和存储相同顺序:LinkedHashSet
 - 不需要:List
-- 需要频繁增删吗?
-- 需要:LinkedList
-- 不需要:ArrayList
+  - 需要频繁增删吗?
+    - 需要:LinkedList
+    - 不需要:ArrayList
 
 ---
 
-## 七.输入/输出
+## 7.输入/输出
 
 ---
 
@@ -907,11 +910,11 @@ c.eat();
 
 - InputStream
 - int read();    从输入流中读取单个字节,返回字节数据(转化为int)
-- int read(byte[] b)   从输入流中读取最多b.length个字节的数据,储存在b[]中,返回实际字节数 
+- int read(byte[] b)   从输入流中读取最多b.length个字节的数据,储存在b[]中,返回实际字节数  
 - int read(byte[] b,int off,int len)     最多读len个字节,从b[]中off出开始储存,返回实际字节数
 - Reader
 - int read();    从输入流中读取单个字符,返回字符数据(转化为int)
-- int read(char[] b)   从输入流中读取最多b.length个字符的数据,储存在b[]中,返回实际字符数 
+- int read(char[] b)   从输入流中读取最多b.length个字符的数据,储存在b[]中,返回实际字符数  
 - int read(char[] b,int off,int len)     最多读len个字符,从b[]中off处开始储存,返回实际字符数
 - 移动记录指针
 - void mark(int readAheadLimit)    在记录指针当前位置记录一个标记(mark)
@@ -1021,7 +1024,7 @@ c.eat();
 - static XxxBuffer allocateDirect(int capacity)    (直接Buffer):创建成本高,读取效率高
   `CharBuffer CB = CharBuffer.allocate(8);`
 - 0 <= mark <= position <= limit <= capacity
-- mark是指针位置标记 
+- mark是指针位置标记  
 - position是可读写区的开始位置
 - limit是可读写区的末位置
 - capacity是缓冲区容量
@@ -1046,11 +1049,9 @@ c.eat();
 - Channel要通过传统的节点InputStream,OutputStream的getChannel()来返回对应的Channel,FileInputStream返回的是Channel,PipedInputStream和PipedOutputStream()返回的是Pipe.SinkChannel和Pipe.SourceChannel.
 ...
 
-
-
 ---
 
-## 八.网络编程
+## 8.网络编程
 
 ---
 
@@ -1160,6 +1161,7 @@ c.eat();
 
 > 用于动态获取类中信息,用Class类实现.
 > 一个应用例子:软件读取配置信息,根据信息,通过反射机制获取对应类的信息,放到软件中从处理.这个时候我们写一个类,并将信息写到配置文件中,软件就会执行加载我们写的类去处理了,不需要我们去软件源代码中操作
+
 ### 获取字节码对象的方法
 
 - 用getClass()方法
