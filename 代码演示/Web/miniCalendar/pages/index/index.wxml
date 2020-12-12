@@ -1,0 +1,100 @@
+<view class='wrap'>
+    <view>
+        <view class='date-show'>
+            <view class='lt-arrow' bindtap='lastMonth'>
+                <image src='../../images/left.png' mode='aspectFit'></image>
+            </view>
+            {{year}}年{{month}}月
+            <view class='rt-arrow' bindtap='nextMonth'>
+                <image src='../../images/right.png' mode='aspectFit'></image>
+            </view>
+        </view>
+    </view>
+    <view class='header'>
+        <view wx:for='{{date}}' class='{{(index == todayIndex) && isTodayWeek ? "weekMark" : ""}}'>{{item}}
+            <view>
+            </view>
+        </view>
+    </view>
+    <view class='date-box'>
+        <view wx:for='{{dateArr}}' class='{{isToday == item.isToday ? "nowDay" : ""}}' data-date='{{item.isToday}}'>
+            <view class='date-head'>
+                <view>{{item.dateNum}}</view>
+            </view>
+        </view>
+    </view>
+</view>
+<view>
+    <!-- <button class='{{!isShow?"show":"hide"}} bgc' bindtap='createCalendar'>新建日程</button>
+    <view class='{{isShow?"show":"hide"}} border'> -->
+    <view class='flex'>
+
+        <!-- -->
+
+        <!--初始时功能菜单-->
+        <view class='{{isIndex}} margin'>
+            <button bindtap='createPlan'>新建计划</button>
+            
+            <button bindtap='createCalendar'>新建日程</button>
+        </view>
+
+        <!--子菜单:新建计划-->
+        <view class='{{isPlanShow}}'>
+            <input bindinput='input' value="{{text}}"></input>
+            <button bindtap='yes'>新建计划</button>
+        </view>
+
+        <!--子菜单:新建日程-->
+
+        <view class='{{isCalShow}}'>
+            <view class='flex'>
+                主题:
+                <input></input>
+            </view>
+
+            <view class="flex">
+
+                <picker mode="date" value="{{date0}}" start="2019-01-01" end="2029-12-31" bindchange="bindDateChange0">
+                    开始日期:
+                    <input value = "{{data0}}"></input>
+                </picker>
+                <text>\n</text>
+                <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                    开始时间:
+                    <input></input>
+                </picker>
+            </view>
+
+            <view class="flex">
+
+                <picker mode="date" value="{{date0}}" start="2019-01-01" end="2029-12-31" bindchange="bindDateChange0">
+                    结束日期:
+                    <input></input>
+                </picker>
+                <text>\n</text>
+                <picker mode="time" value="{{time}}" start="09:01" end="21:01" bindchange="bindTimeChange">
+                    结束时间:
+                    <input></input>
+                </picker>
+            </view>
+
+            <view class = "flex">
+                <button>确认</button>
+                <button>取消</button>
+            </view>
+
+
+        </view>
+
+    </view>
+    <view class="item-box">
+        <view class="items">
+            <view wx:for="{{list}}" wx:key="{{index}}" class="item">
+                <view bindtouchstart="touchS" bindtouchmove="touchM" bindtouchend="touchE" data-index="{{index}}" style="{{item.txtStyle}}" class="inner txt">{{item.txt}}</view>
+                <view data-index="{{index}}" bindtap="delItem" class="inner del">删除</view>
+            </view>
+        </view>
+    </view>
+
+
+</view>

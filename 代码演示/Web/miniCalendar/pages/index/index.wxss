@@ -1,0 +1,223 @@
+
+
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.flex {
+    display: flex;
+}
+
+margin{
+    margin: auto
+}
+
+
+button {
+    height: 90rpx;
+    line-height: 90rpx;
+}
+
+input{
+    height: 80rpx;
+    margin-right: 40rpx;
+    border-bottom: 1rpx solid #282828;
+}
+
+.border {
+    margin-left: 50rpx;
+}
+
+.bgc {
+    background-color: aquamarine;
+}
+
+.show {
+    display: block;
+}
+
+.hide {
+    display: none;
+}
+
+.date-show {
+    position: relative;
+    width: 250rpx;
+    font-family: PingFang-SC-Regular;
+    font-size: 40rpx;
+    color: #282828;
+    text-align: center;
+    margin: 59rpx auto 10rpx;
+}
+
+.lt-arrow, .rt-arrow {
+    position: absolute;
+    top: 1rpx;
+    width: 60rpx;
+    height: 60rpx;
+    padding-right: 0.6rem;
+}
+
+.lt-arrow image, .rt-arrow image {
+    width: 40rpx;
+    height: 40rpx;
+}
+
+.lt-arrow {
+    left: -110rpx;
+    /* transform: rotate(180deg); */
+}
+
+.rt-arrow {
+    right: -100rpx;
+}
+
+.header {
+    font-size: 0;
+    padding: 0 24rpx;
+}
+
+.header>view {
+    display: inline-block;
+    width: 14.285%;
+    color: #333;
+    font-size: 30rpx;
+    text-align: center;
+    border-bottom: 1px solid #d0d0d0;
+    padding: 39rpx 0;
+}
+
+.weekMark {
+    position: relative;
+}
+
+.weekMark view {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-bottom: 1px solid #22a7f6;
+}
+
+.date-box {
+    font-size: 0;
+    padding: 10rpx 0;
+}
+
+.date-box>view {
+    position: relative;
+    display: inline-block;
+    width: 14.285%;
+    color: #020202;
+    font-size: 40rpx;
+    text-align: center;
+    vertical-align: middle;
+    margin: 15rpx 0;
+}
+
+.date-head {
+    height: 60rpx;
+    line-height: 60rpx;
+    font-size: 26rpx;
+}
+
+.nowDay .date-head {
+    width: 60rpx;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    background-color: #22a7f6;
+    margin: 0 auto;
+}
+
+.date-weight {
+    font-size: 22rpx;
+    padding: 15rpx 0;
+}
+
+.nowDay .date-weight {
+    color: #22a7f6;
+}
+
+.one {
+    position: absolute;
+    bottom: 0;
+    right: 5rpx;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 50%;
+    background-color: red;
+}
+
+.two {
+    position: absolute;
+    bottom: 30rpx;
+    right: 5rpx;
+    width: 20rpx;
+    height: 20rpx;
+    border-radius: 50%;
+    background-color: blue;
+}
+
+view {
+    box-sizing: border-box;
+}
+
+.item-box {
+    width: 700rpx;
+    margin: 0 auto;
+    padding: 40rpx 0;
+}
+
+.items {
+    width: 100%;
+}
+
+.item {
+    position: relative;
+    border-top: 2rpx solid #eee;
+    height: 120rpx;
+    line-height: 120rpx;
+    overflow: hidden;
+}
+
+.item:last-child {
+    border-bottom: 2rpx solid #eee;
+}
+
+.inner {
+    position: absolute;
+    top: 0;
+}
+
+.inner.txt {
+    background-color: #fff;
+    width: 100%;
+    z-index: 5;
+    padding: 0 10rpx;
+    transition: left 0.2s ease-in-out;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.inner.del {
+    background-color: #e64340;
+    width: 180rpx;
+    text-align: center;
+    z-index: 4;
+    right: 0;
+    color: #fff;
+}
+
+.thumb {
+    width: 200px;
+    height: 200px;
+    -webkit-overflow-scrolling: touch;
+    overflow: scroll;
+}
