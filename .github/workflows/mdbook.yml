@@ -51,6 +51,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       MDBOOK_VERSION: 0.4.21
+    needs: cache
     steps:
       - uses: actions/checkout@v3
       - name: Install mdBook
