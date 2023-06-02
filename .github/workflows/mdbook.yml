@@ -38,6 +38,8 @@ jobs:
           path: |
             /root/.cargo/bin/mdbook
             /usr/local/cargo/bin/mdbook
+            /root/.cargo/bin/mdbook-auto-gen-summary
+            /usr/local/cargo/bin/mdbook-auto-gen-summary
             Cargo.toml
             Cargo.lock
           key: ${{ runner.os }}-mdbook-${{ hashFiles('**/Cargo.toml') }}
