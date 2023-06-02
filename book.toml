@@ -5,5 +5,12 @@ multilingual = false
 src = "src"
 title = "Ovins`s Bolg"
 
+[build]
+create-missing = false
+
 [preprocessor.auto-gen-summary]
 first-line-as-link-text = true
+
+[output.html.fold]
+enable = true
+level = 0
