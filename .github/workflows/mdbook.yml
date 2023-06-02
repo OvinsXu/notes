@@ -25,7 +25,28 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # Build job
+  # 任务1：检查和恢复缓存区域,为rust和mdbook构建缓存,提高效率
+  cache:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Cache Dependencies
+        uses: actions/cache@v2
+        with:
+          path: |
+            /root/.cargo/bin/mdbook
+            /usr/local/cargo/bin/mdbook
+            Cargo.toml
+            Cargo.lock
+          key: ${{ runner.os }}-mdbook-${{ hashFiles('**/Cargo.toml') }}
+
+      - name: Install Rust toolchain
+        uses: actions-rs/toolchain@v1
+        with:
+          profile: minimal
+  # 任务2: 把markdown转成静态网页
   build:
     runs-on: ubuntu-latest
     env:
@@ -47,7 +68,7 @@ jobs:
         with:
           path: ./book
 
-  # Deployment job
+  # 任务3: 部署静态网页到Github Pages
   deploy:
     environment:
       name: github-pages
