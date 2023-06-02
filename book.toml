@@ -2,15 +2,5 @@
 authors = ["ovins"]
 language = "zh"
 multilingual = false
-src = "src"
+src = "."
 title = "Ovins`s Bolg"
-
-[build]
-create-missing = false
-
-[preprocessor.auto-gen-summary]
-first-line-as-link-text = true
-
-[output.html.fold]
-enable = true
-level = 3
