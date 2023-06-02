@@ -1,0 +1,6 @@
+[book]
+authors = ["ovins"]
+language = "zh"
+multilingual = false
+src = "src"
+title = "Ovins`s Bolg"
