@@ -1,6 +1,16 @@
 [book]
 authors = ["ovins"]
 language = "zh"
-multilingual = false #多语言
+multilingual = false    #多语言
 src = "src"
 title = "Ovins`s Bolg"
+git-repository-url = "https://github.com/OvinsXu/notes"
+
+[output.html.print]
+enable = false    #不显示打印按钮
+
+[output.html.fold]
+enable = true   #折叠侧边栏
+
+[output.html.playground]
+line-numbers = true #代码块显示行号
