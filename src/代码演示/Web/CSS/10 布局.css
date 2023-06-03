@@ -1,0 +1,34 @@
+div{
+    border: 2px solid #666;
+    background-color: aqua;
+    width: 320px;
+    height: 240px;
+    
+}
+/*浮动流*/
+.div1,.div2{
+    border: 2px solid #666;
+    background-color: aquamarine;
+    width: 160px;
+    height: 120px;
+
+    float: left;
+
+}
+/*用伪元素清除浮动,转回标准流*/
+.div2::after{
+    /* 
+        block:  占据一行,可设置宽高
+        inline: 不占一行,不可设置宽高
+    */
+    content:" ";    /*增加内容,使元素存在*/
+    display:block;  /*变为块元素*/
+    clear:both;     /*清除浮动*/
+}
+/*  其他盒子模型:
+    inline-block    不占一行,可设置宽高
+    inline-table
+    list-item       类似于<ul>
+    run-in          在后面元素内显示
+
+*/

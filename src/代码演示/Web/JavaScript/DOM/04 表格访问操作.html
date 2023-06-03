@@ -1,0 +1,61 @@
+<html>
+    <head>
+
+    <body>
+        <script>
+            //------------------------------------------------------------------------
+            /*  表格
+
+                caption     返回表格的标题对象
+                rows        所有表格行
+                    {
+                        cells               返回该表格内所有单元格组成的数组
+                            cells[index]        单元格在表格内的索引
+                        rowIndex            表格行在表格内的索引
+                        sectionRowIndex     返回该表格行在其所在元素的索引值
+                    }
+                tbodies     所有<tbody>组成的数组
+                tfoot       所有<tfoot>元素
+                thead       所有<thead>元素         
+            */
+
+            
+
+        </script>
+        <br/><br/><hr/>
+
+        <table id="mytable" border="1">
+        <caption>表格标题</caption>
+            <tr>
+                <td>C</td>
+                <td>C++</td>
+            </tr>
+            <tr>
+                <td>java</td>
+                <td>android</td>
+            </tr>
+            <tr>
+                <td>PHP</td>
+                <td>Python</td>
+            </tr>
+        </table>
+    </body>
+    <input type="button" value="标题" onclick="alert(document.getElementById('mytable').caption.innerHTML);"/>
+    <input type="button" value="第一行第一个" onclick="alert(document.getElementById('mytable').rows[0].cells[0].innerHTML);"/>
+    <input type="button" value="第二行第二个" onclick="alert(document.getElementById('mytable').rows[1].cells[1].innerHTML);"/><br/>
+
+
+    修改第<input type="text" id="row" size="2"/>行,第<input type="text" id="cel" size="2"/>列的值为<input type="text" id="course" size="5"/>
+    <input type="button" id="btn_set" value="修改" onclick="changeTable()"/>
+
+    <script>
+        function changeTable(){
+                var raw = document.getElementById("row").value;
+                var cel = document.getElementById("cel").value;
+                var temp = document.getElementById("mytable");
+                //temp.rows[raw-1].cells[cel-1].innerHTML = document.getElementById("course").value;
+                //也可以通过item方式访问
+                temp.rows.item(raw-1).cells.item(cel-1).innerHTML = document.getElementById("course").value;
+            }
+    </script>
+</html>

@@ -1,0 +1,12 @@
+body{
+    /*设置图片背景,默认平铺*/
+    background-image: url('http://www.pptbz.com/pptpic/UploadFiles_6909/201211/2012111719294197.jpg');
+    /*
+    background-repeat:repeat-x;     以x轴平铺
+    background-repeat:repeat-y;     以y轴平铺
+    */
+    background-repeat: no-repeat;   /*设置不平铺*/
+
+    background-position: 50% 10%;   /*设置平移*/
+    background-attachment: fixed;   /*固定*/
+}

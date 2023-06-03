@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang = 'zh'>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href= ''>
+    
+    <title></title>
+</head>
+<body>
+    <div id="haha"></div>
+    <script>
+            /*
+                Worker:需要发布到站点才可以正常显示
+            */
+            var worker = new Worker('worker.js');
+            worker.onmessage = function(event){
+                document.getElementById('haha').innerHTML += event.data +", ";
+            };
+        </script>
+</body>
+</html>

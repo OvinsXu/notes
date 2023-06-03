@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script>
+            
+            function stu(name){
+                this.name = name;
+            } 
+            
+            //1.使用json语法创建对象
+            var json = {
+                name:"来福"
+            }
+
+            //2.使用new关键字调用构造器创建对象
+            var s1 = new stu("小强");
+
+            // 使用object创建对象
+            var obj = new Object();
+            obj.name = "旺财";
+
+            // //3.使用create           错误
+            // var obj = stu.create();
+        
+           
+
+            /*
+            另外
+            1.  var obj = {}
+
+            2.  var obj = new Object();
+
+            3.  var obj = Object.create();
+            */
+
+            document.write(s1.name+"<br/>");
+            document.write(obj.name+"<br/>");
+            document.write(json.name);
+        </script>
+    </head>
+</html>

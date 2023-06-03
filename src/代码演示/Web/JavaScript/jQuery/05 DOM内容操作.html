@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="../jQuery/00 jQuery/jquery-3.3.1.js"></script>
+    <title></title>
+    <script>
+        /**
+
+        */
+        $(function(){
+            //设置属性
+            $("input:eq(0)").click(function(){
+                $(this).attr("title","这是设置的属性");
+            })
+            //获取属性
+            $("input:eq(1)").click(function(){
+                var attr = $("input:eq(0)").attr("title");
+                window.alert(attr);
+            })
+            //删除属性
+            $("input:eq(2)").click(function(){
+                $("input:eq(0)").removeAttr("title");
+            })
+            //设置值
+            $("input:eq(3)").click(function(){
+                $("#txt").val("我是动态设置的值");
+            })
+            //获取值
+            $("input:eq(4)").click(function(){
+                var val = $("#txt").val();
+                window.alert(val);
+            })
+            //设置html
+            $("input:eq(5)").click(function(){
+                $("div").html("<p>哈哈哈</p>");
+            })
+            //获取html
+            $("input:eq(6)").click(function(){
+                var html = $("div").html();
+                window.alert(html);
+            })
+            //设置html
+            $("input:eq(7)").click(function(){
+                $("div").text("哈哈哈");
+            })
+            //获取html
+            $("input:eq(8)").click(function(){
+                var html = $("div").text();
+                window.alert(html);
+            })
+        })
+        
+    </script>
+</head>
+<body>
+    <input type="button" value = "设置属性">
+    <input type="button" value = "获取属性">
+    <input type="button" value = "移除属性">
+    <input type="button" value = "设置值">
+    <input type="button" value = "获取值">
+    <input type="button" value = "设置html">
+    <input type="button" value = "获取html">
+    <input type="button" value = "设置text">
+    <input type="button" value = "获取text">
+    <input type="text" id = "txt">
+    <div></div>
+</body>
+</html>

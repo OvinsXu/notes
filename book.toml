@@ -2,5 +2,5 @@
 authors = ["ovins"]
 language = "zh"
 multilingual = false
-src = "."
+src = "src"
 title = "Ovins`s Bolg"

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang='zh'>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' href=''>
+    <script>
+        window.onload = function () {
+            var btn = document.getElementById('btn');
+            btn.onclick = function(){
+
+                //第一步:创建对象
+                var xhr = null;
+
+                var username = document.getElementById('username').value;
+                var password = document.getElementById('password').value;
+
+                if (window.XMLHttpRequest) {//标准浏览器
+                    xhr = new XMLHttpRequest();
+                } else {//兼容IE浏览器
+                    xhr = new ActiveXObject('Microsoft.XMLHTTP');
+                }
+                //第二步:配置请求的行为
+                var url = 'form.php';
+                xhr.open('post', url, true);//('发送类型','地址',异(true)/同(false)步)
+
+                //第三步:执行请求
+                xhr.setRequestHeader('Content-Type','application/x-www-form-urlencoded');
+                var val = 'username='+username+"&password="+password;
+                xhr.send(val);
+
+
+                //第四部:指定回调函数
+                xhr.onreadystatechange = function(){
+                    /*
+                        readyStatey有5个参数:
+                            0:  对象创建完成
+                            1:  配置完成
+                            2:  放送完成
+                            3:  返回数据
+                            4:  数据可使用
+                    */
+                    if (xhr.readyState == 4) {
+                        /*
+                            status常见值
+                            200:  请求成功
+                            404:  找不到页面
+                            503:  服务端错误
+                        */
+                        if (xhr.status == 200) {
+                            var data0 = xhr.responseText;//JSON
+                            console.log(data0);
+                            //var data1 == xhr.responseXML;//XML
+                        }
+                    }
+
+                }
+            }
+
+        }
+    </script>
+    <title>原生Ajax</title>
+</head>
+
+<body>
+    <div>
+        <form method="post">
+            账号:<input type="text" name="username" id="username" value=""><br>
+            密码:<input type="password" name="password" id="password" value=""><br>
+            <input type="button" value="提交" id="btn">
+        </form>
+    </div>
+
+</body>
+
+</html>

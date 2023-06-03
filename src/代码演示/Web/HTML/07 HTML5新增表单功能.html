@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>新增表单功能</title>
+</head>
+<body>
+    <!--
+        新增input输入类型
+            email:              验证email地址
+            url:                输入URl的字段
+            number:             用于输入数字的字段
+            range:              用于精确值不高的输入数字的控件
+            Date pickers:
+                 date:              定义date组件
+                 month:             定义month和year控件
+                 week:              定义week和year控件
+                 time:              定义用于输入时间的控件
+                 datetime:          定义date和time控件
+                 datetime-local:    定义date和time控件
+            search:             定义用于输入搜索字符串的文本字段
+            tel:                定义用于输入电话号码的字段
+            color:              定义拾色器       
+    -->
+    <!-------------------------------------------------------------------------------------->
+
+    <form action="#" method="GET">
+        <input type="email" name="email"/><hr/>
+        <input type="url" name="url"/><hr/>
+        <input type="number" name="number" max="100" min="0" value="1"/><hr/>
+        <input type="date" name="date"/><hr/>
+        <input type="color" name="color"/><hr/>
+        <input type="submit" value="提交"/>
+    </form>
+
+    <!--
+        新增的input属性
+            autocomplete        是否启用自动完成功能
+            autofocus           自动获取焦点
+            form                规定<input>所属的表单
+            formnovalidate      覆盖表单的novalidate属性
+        --------------------------------------------------
+
+            对于type="submit"/"image"
+                formation           表单提交时处理输入控件的文件的URL
+                formenctype         表单数据提交时的编码
+                formmethod          发送表单到URl的方法
+                formnovalidate      覆盖表单的novalidate属性
+                formtarget          规定表示提交表单后在哪里显示接收到响应的名称或关键字
+
+            对于type="image"
+                新增height和width
+
+        --------------------------------------------------
+
+        list                
+        min/max/step        最小值/最大值/时间间隔
+        multiple            允许用户输入到<input>的多个值
+        pattern             验证<input>值得正则表达式
+        placeholder         简短提示信息
+        required            必须在提交表单之前填写输入字段
+    -->
+    <!--------------------------------------------------------------------------------------->
+    <br/><br/><hr/>
+
+    <!--
+        新增的form元素
+            datalist        为输入框提供选择列表
+            Keygen          密钥生成器
+            output          用于浏览显示的脚本或计算结果
+            novalidate      取消整个表单的有效性检查
+            autocomplete    自动完成功能
+            
+    -->
+
+    </form>
+
+
+
+
+
+</body>
+</html>

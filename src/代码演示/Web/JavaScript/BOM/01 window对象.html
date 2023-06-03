@@ -1,0 +1,78 @@
+<html>
+    <head>
+        <script>
+            //1     window对象
+            /*
+            1.  子对象
+                document    返回该窗口的HTML文档
+                location    返回HYML文档的URL
+                navigtor    浏览器属性
+                screen      屏幕对象
+                history     浏览窗口历史
+            2.  方法
+                alert()     警告窗口
+                confirm()   确认窗口
+                prompt()    提醒输入框
+
+                open()      打开窗口
+                close()     关闭窗口
+
+                moveBy()    移动窗口
+                moveTo()    移动窗口到
+
+                resizeBy()  重设窗口大小
+                resizeTo()
+
+                scrollBy()  滚动Html文档
+                scrollTo()
+
+                setInterval()   设置定时器
+                clearInterval() 删除定时器
+
+            */
+            function testConfirm(){
+                var answer = window.confirm("Yes/No");
+                if(answer){
+                    document.write("Yes");
+                }else{
+                    document.write("No");
+                }
+            }
+            function testPrompt(){
+                var answer = window.prompt("2+3=?","5");
+            }
+
+            function testMoveBy(){
+                window.moveBy(250,250);
+            }
+            function testMoveTo(){
+               window.moveTo(250,250);
+            }
+
+            function testResizeBy(){
+                window.resizeBy(250,250);
+            }
+            function testResizeTo(){
+               window.resizeTo(250,250);
+            }
+
+            function haha(){
+                document.getElementById("haha").innerHTML = "haha";
+            }
+            var t = window.setInterval("haha()",1000) 
+        </script>
+    </head>
+    <body>
+        <input type="button" value="confirm" onclick="testConfirm()"/>
+        <input type="button" value="prompt" onclick="testPrompt()"/>
+        <input type="button" value="moveBy" onclick="testMoveBy()"/>
+        <input type="button" value="moveTo" onclick="testMoveTo()"/>
+
+        <input type="button" value="resizeBy" onclick="testResizeBy()"/>
+        <input type="button" value="resizeTo" onclick="testResizeTo()"/>
+      
+        <div id = "haha">
+
+        </div>
+    </body>
+</html>

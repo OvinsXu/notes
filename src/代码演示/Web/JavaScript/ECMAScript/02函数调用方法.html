@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script>
+
+            function show(str){
+                window.alert(str);
+            }
+
+            //方式1：   对象.函数引用；
+            window.show("haha");
+
+            //方式2：   函数引用。call（参数1，参数2...）
+            show.call(window,"hehe");
+
+            //方式3：   函数引用.apply（调用者，argument）
+            show.apply(window,["enen"]);
+        </script>
+    </head>
+</html>

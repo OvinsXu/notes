@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-1.9.0.min.js"></script>
+    <title></title>
+    <style> 
+        *{
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        div{
+            background-color: rgb(170, 47, 47);
+            height: 100px;
+            padding-left: 300px;
+        }
+        .ul{
+            margin: 0 10px;
+            float: left;
+            list-style: none;
+            width: 80px;
+            height: 30px;
+            
+            background-color: rgb(143, 21, 224);
+        }
+        .ul ul li{
+            width: 80px;
+            height: 30px;
+            border:2px solid #666;
+            background-color:rgb(185, 11, 92);
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+            
+            $(".ul>ul").hide();
+            //      方法一
+            // $(".ul").mouseenter(function () { 
+            //     $(this).children("ul").show();
+            // });
+            // $(".ul").mouseleave(function () { 
+            //     $(this).children("ul").hide();
+            // });
+
+            //      方法2
+            // $(".ul").hover(function(){
+            //     $(this).children("ul").show();
+            // },function(){
+            //     $(this).children("ul").hide();
+            // })
+
+            //      方法3
+            $(".ul").hover(function(){
+                $(this).children("ul").slideToggle();
+            })
+        })
+    </script>
+</head>
+<body>
+    <div>
+        <ul class="ul">
+            <li>一</li>
+        <ul>
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+        </ul>
+        </ul>
+        <ul class="ul">
+            <li>二</li>
+        <ul>
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+        </ul>
+        </ul>
+        <ul class="ul">
+            <li>三</li>
+        <ul>
+            <li>list1</li>
+            <li>list2</li>
+            <li>list3</li>
+        </ul>
+        </ul>
+    </div>
+</body>
+</html>

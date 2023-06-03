@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="">
+    <script src="./00 jQuery/jquery-3.3.1.js"></script>
+    <script>
+    /*
+        1.基本选择器
+            ID选择器        #id
+            类选择器        .class
+            标签选择器      p
+            通配符选择器    *
+            并集选择器      #id,.class      至少有一个
+            交集选择器      #id.class       同时有这两个属性
+        
+        2.层级选择器
+            后代选择器      空格
+            子代选择器      >
+            紧邻选择器      +       后第一个
+            兄弟选择器      ~       选择后面所有兄弟元素
+
+        3.过滤选择器
+            基本过滤选择器
+                :eq(index)      选择第index个       例如:li:eq(4)
+                :gt(index)      选择大于index的
+                :lt(index)      小于的
+                :odd            奇数的
+                :even           偶数的
+                :frist          第一个
+                :last           最后一个
+            属性选择器
+                [attr = value]      属性等于
+                [attr!= value]      属性不等于
+                [attr^=value]       以value开头的
+                [attr$=value]       以value结尾的
+                [attr*=value]       包含value的
+                [attr*=value]       包含value的
+                [attr][attr]        交集关系
+            筛选选择器
+                .eq("index")        选择第index个
+                .frist
+                .parent("...")      选择父元素
+                .children()         选择子元素
+                .siblings()         兄弟元素
+                .find()             查找方法
+    */
+    $(document).ready(function(){
+        $(".try").css({
+            "border":"1px solid #666",
+            "width":"480px",
+            "height":"540px",
+        })
+        $("p,li").css({
+            "color":"red"
+        })
+        $("#id.1").css({
+            "background":"green"
+        })
+        $("li:lt(3)").css({
+            "font-size":"24px"
+        })
+    })
+    </script>
+    <title>选择器</title>
+</head>
+<body>
+    <div class="try">
+        <div id="id">
+            <div class="1">一</div>
+            <div class="2">二</div>
+        </div>
+        <p>try</p>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+    </div>
+</body>
+</html>

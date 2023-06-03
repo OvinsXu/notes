@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <img id ="h" src="#" alt="图片载入出错时显示的文字" title="图片获得焦点时显示的文字"/>
+    <br>
+    图片格式:
+        jpg     有损压缩,不支持透明
+        png     无损压缩,支持透明
+        gif     动图
+
+    <hr>
+    <a href="#h">显示文本
+        <img src="ss#" alt = "超链接里可以嵌套图片"/>
+    </a>
+    <!--
+        #h                      跳转地址
+        target = "_blank"       跳转方式
+    -->
+
+    <hr>
+    <!--图片映射-->
+
+    <img src="#" alt="" usemap="#haha"/>
+    <map name="haha">
+        <area shape="circle" coords="233,456,50" href="#">
+        <!--
+            area    划分区域
+            shape   形状    
+                圆形    circle
+                矩形    rect
+                多边形  poly
+        -->
+    </map>
+</body>
+</html>
