@@ -1,6 +1,6 @@
 [book]
 authors = ["ovins"]
 language = "zh"
-multilingual = false
+multilingual = false #多语言
 src = "src"
 title = "Ovins`s Bolg"
