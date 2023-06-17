@@ -1,4 +1,6 @@
-# Git
+# Git&Github学习
+
+
 
 ## 1.基本操作
 
@@ -53,9 +55,12 @@
 
 ### 3.其他
 
-- 生成密钥  ssh-keygen-t rsa-C "xxxxx@xxxxx.com" 
-- 设置名称  git config--global user.name  "name"
-- 设置邮箱  git config--global user.email "123@126.com"
+- 生成密钥  `ssh-keygen -t rsa -C "ovins@outlook.com" `
+- 设置名称  `git config --global user.name "ovins"`
+- 设置邮箱  `git config --global user.email "ovins@outlook.com"`
+
+生成一份公私钥后,我们把公钥添加到github上,私钥则保存在`用户目录/.ssh/`下.
+		假如我们有多台主机,可以直接拷贝该文件夹。不用再去生成公私钥。但是需要使用`ssh-add`添加一下。并且把权限设置为`700`
 
 ---
 
