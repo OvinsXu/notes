@@ -25,7 +25,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:   
-  # 任务2: 把markdown转成静态网页
+  # 把markdown转成静态网页html
   build:
     runs-on: ubuntu-latest
     env:
@@ -37,6 +37,7 @@ jobs:
           curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf -y | sh
           rustup update
           cargo install --version ${MDBOOK_VERSION} mdbook
+          python3 ./generate_summary.py
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v3
@@ -47,7 +48,7 @@ jobs:
         with:
           path: ./book
 
-  # 任务3: 部署静态网页到Github Pages
+  # 部署静态网页到Github Pages
   deploy:
     environment:
       name: github-pages

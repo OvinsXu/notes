@@ -1,19 +1,41 @@
 [book]
-authors = ["ovins"]
+title = "Ovins`s Bolg"
+authors = ["Ovins"]
+description = "许小仙的个人博客"
+
 language = "zh"
 multilingual = false    #多语言
+
 src = "src"
-title = "Ovins`s Bolg"
+
+#[build]
+create-missing = false  #不要根据summary自动创建文件
+
+
+
+[output.html]
+#default-theme = "Rust"  
+no-section-label = true #不自动添加目录序号
+
+mathjax-support = true #支持数学方程式
+
+git-repository-icon = "fa-github"
 git-repository-url = "https://github.com/OvinsXu/notes"
+edit-url-template = "https://github.com/OvinsXu/notes/edit/master/{path}"   #开启快速编辑
+
+
 
 [output.html.print]
 enable = false    #不显示打印按钮
 
 [output.html.fold]
-enable = true   #折叠侧边栏
+enable = true   #侧边栏目录的展开设置
+level = 1       #默认展开一层
+
 
 [output.html.playground]
 line-numbers = true #代码块显示行号
+editable = true #设置代码块可编辑
 
 
 
