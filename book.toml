@@ -8,7 +8,7 @@ multilingual = false    #多语言
 
 src = "src"
 
-#[build]
+[build]
 create-missing = false  #不要根据summary自动创建文件
 
 

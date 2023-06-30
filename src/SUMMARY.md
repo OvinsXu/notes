@@ -2,13 +2,7 @@
 
 [博客目录](SUMMARY.md)
 
-[草稿目录](https://github.com/OvinsXu/notes/draft)
+[草稿](https://github.com/OvinsXu/notes/draft)
 
 ---
 
-- [基础原理](基础原理/README.md)
-  - [x86汇编语言](基础原理/x86汇编语言.md)
-  - [《ARM体系结构与编程》学习笔记](基础原理/《ARM体系结构与编程》学习笔记.md)
-  - [《电路》学习笔记](基础原理/《电路》学习笔记.md)
-  - [数据结构与算法](基础原理/数据结构与算法.md)
-  - [计算机网络](基础原理/计算机网络.md)
