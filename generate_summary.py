@@ -30,7 +30,7 @@ def generate_summary(directory_path, level=0):
     for i, dir_name in enumerate(sorted(dirs)):
         subdirectory_path = os.path.join(directory_path, dir_name)
         with open("./src/SUMMARY.md", "a") as summary_file:
-            summary_file.write(f"{indent}- [{dir_name}]({dir_name}/README.md)\n")
+            summary_file.write(f"{indent}- [{dir_name}]()\n")
         generate_summary(subdirectory_path,level+1)
 
 # 指定包含章节的文件夹路径
