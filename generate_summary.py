@@ -47,6 +47,6 @@ if os.path.exists(summary_path):
 
 # 生成新的
 with open("./src/SUMMARY.md", "w") as summary_file:
-        summary_file.write("# 目录\n\n[博客目录](SUMMARY.md)\n\n---\n\n")
+        summary_file.write("# 目录\n\n[博客目录](SUMMARY.md)\n\n[草稿](https://github.com/OvinsXu/notes/tree/master/draft)\n\n---\n\n")
 
 generate_summary(root_directory)
