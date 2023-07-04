@@ -1,5 +1,7 @@
 # 快捷键设置
 
+以**通用105键盘**为例，尝试设计一套较为通用的快捷键方案
+
 快捷键 = 修饰键（4个） + 触发键（其他）。
 
 修饰键可以多个组合,触发键不能组合，用于触发事件。
@@ -13,6 +15,7 @@
 5.  6个`特殊键` ：Del   Tab   Caps  Enter   Backspace   Space
 6. 12个`符号键` ：～   -    +      [   ]   \   /   <   >   ;   '
 7.  4个`方向键` ：上    下   左   右
+8.  9个`其他键` ：PrintScreen ScrollLock Pause Insert Delete Home End PageUp PageDown
 
 ## 修饰键组合
 共15种组合方式。

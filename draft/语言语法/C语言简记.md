@@ -1,60 +1,71 @@
-# C语言  
-  
-> 学C语言时看的是K&R的书,还有赫斌老师的视频,传智播客,极客学院的视频,因为自初中开始自学编程,一直没有系统的进行学习,往往复复,把C语言学了几遍,上了大学又学了谭浩强的书...  
->  
-> 下面只是简单的一些记录,不系统,不详细.  
+# C语言简记  
 
-//这个是看传智博客的视频记的笔记  
-//乱乱的,懒得整理了,有空再说  
-[文档：C_传智播客_笔记.note](http://note.youdao.com/noteshare?id=16279f998b487d74419dfe7ea35a9266&sub=651F18C079B94698BA3F072EA2130F6D)
+C语言语法比较简单，可以选择《C程序设计语言》作为入门书籍。
 
 ## 一、基本数据类型  
 
 1、常量和变量  
 
-常量: #define MY_AGE 10000  
-const int MY_AGE = 10000:  
+常量:  
+`#define MY_AGE 10000`  
+`const int MY_AGE = 10000:`  
 变量:  
-  
+`int i = 0；`等等
+
 2、整型数据  
-int  
-long  32位系统4个字节，64位系统8个字节  
-long long  都为8个字节  
+
+`int`  
+`long`  32位系统4个字节，64位系统8个字节  
+`long long`  都为8个字节  
+
+`unsigned int`  无符号类型  
 long和long long用%ld输出  
-  
-unsigned int  无符号类型  
-  
+
 0b  二进制数据  
 0  八进制数据  
 0x  十六进制数据  
   
 C11后(在各平台通用)  
+
+```c
 int32_t  
 int8_t  
 uint8_t  
 int64_t  
+```
 
 3、实型数据  
+
 float  单精度，四个字节  用%f  
 double   双精度，八个字节  
 long double  长双精度，十六个字节 用%lf  
   
 4.字符型数据  
+
 转义字符  
+
+```c
 \a  响铃符  
 \n  换行符  
 \r  回车符  
 \b  退格符  
 \t  制表符  
-\\\  \  
-\\'  '  
-\\"  "  
+\\    \  
+\'    '  
+\"    "  
+```
 
 字符型数据  
+
+```c
 char ch = 'A';  
 printf("%c\n",ch);  
-5.typedef  
-typedef  int64_t bts;  
+```
+
+5.typedef自定义类型
+
+`typedef  int64_t myint;`
+
 定义在主函数前  
   
 ## 二.流程控制与循环  
